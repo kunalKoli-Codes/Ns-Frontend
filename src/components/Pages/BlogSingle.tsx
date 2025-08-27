@@ -16,13 +16,14 @@ const BlogSingle: React.FC<BlogSingleProps> = ({ onNavigate }) => {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch blog post and related posts
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchBlogPost = async () => {
       setLoading(true);
       setError(null);
       try {
         // Fetch all posts to find the one matching the slug
-        const response = await axios.get('/api/blogposts');
+        const response = await axios.get(`${API_URL}/api/blogposts`);
         const posts: BlogPost[] = response.data;
         const foundBlog = posts.find((b) => b.slug === slug);
 
