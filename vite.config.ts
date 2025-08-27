@@ -7,13 +7,17 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-      server: {
-       proxy: {
-         '/api': {
-           target: 'https://ns-frontend.onrender.com',
-           changeOrigin: true,
-           rewrite: (path) => path.replace(/^\/api/, '/api'),
-         },
-       },
-     },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://ns-frontend.onrender.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api'),
+      },
+    },
+  },
+  build: {
+    outDir: 'dist',
+  },
+  base: './',   // 👉 yeh line ADD karni zaroori hai
 });
