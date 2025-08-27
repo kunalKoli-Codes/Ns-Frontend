@@ -22,6 +22,7 @@ const CourseManager: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch courses on component mount
+  const API_URL = import.meta.env.VITE_API_URL 
   useEffect(() => {
     fetchCourses();
   }, []);
@@ -30,7 +31,7 @@ const CourseManager: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('/api/courses');
+      const response = await axios.get(`${API_URL}/api/courses`)
       setCourses(response.data);
     } catch (err) {
       setError('Failed to fetch courses. Please try again.');
