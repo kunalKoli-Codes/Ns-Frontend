@@ -15,12 +15,13 @@ const Courses: React.FC<CoursesProps> = ({ onNavigate }) => {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch courses from API on component mount
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/courses';
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get('https://ns-frontend.onrender.com/api/courses');
+        const response = await axios.get(`${API_URL}/api/courses`)
         setCourses(response.data);
       } catch (err) {
         setError('Failed to fetch courses. Please try again.');
