@@ -16,21 +16,24 @@ const Courses: React.FC<CoursesProps> = ({ onNavigate }) => {
 
   // Fetch courses from API on component mount
   useEffect(() => {
-    const fetchCourses = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await axios.get('/api/courses');
-        setCourses(response.data);
-      } catch (err) {
-        setError('Failed to fetch courses. Please try again.');
-        console.error('Error fetching courses:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCourses();
-  }, []);
+  const fetchCourses = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/courses`
+      );
+      setCourses(response.data);
+    } catch (err) {
+      setError('Failed to fetch courses. Please try again.');
+      console.error('Error fetching courses:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchCourses();
+}, []);
+
 
   const filteredCourses = courses.filter((course) => {
     const matchesCategory = selectedCategory === 'All' || course.category === selectedCategory;
