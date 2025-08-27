@@ -15,12 +15,13 @@ const Blog: React.FC<BlogProps> = ({ onNavigate }) => {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch blog posts on mount
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchBlogPosts = async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get('/api/blogposts');
+        const response = await axios.get(`${API_URL}/api/blogposts`);
         setBlogPosts(response.data);
       } catch (err) {
         setError('Failed to fetch blog posts. Please try again.');
