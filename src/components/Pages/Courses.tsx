@@ -20,7 +20,7 @@ const Courses: React.FC<CoursesProps> = ({ onNavigate }) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get('/api/courses');
+        const response = await axios.get('https://ns-frontend.onrender.com/api/courses');
         setCourses(response.data);
       } catch (err) {
         setError('Failed to fetch courses. Please try again.');
