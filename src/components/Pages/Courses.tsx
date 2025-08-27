@@ -15,7 +15,7 @@ const Courses: React.FC<CoursesProps> = ({ onNavigate }) => {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch courses from API on component mount
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/courses';
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
