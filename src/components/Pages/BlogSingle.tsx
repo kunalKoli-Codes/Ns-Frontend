@@ -23,7 +23,7 @@ const BlogSingle: React.FC<BlogSingleProps> = ({ onNavigate }) => {
       setError(null);
       try {
         // Fetch all posts to find the one matching the slug
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/courses';
+        const response = await axios.get(`${API_URL}/api/blogposts`);
         const posts: BlogPost[] = response.data;
         const foundBlog = posts.find((b) => b.slug === slug);
 
