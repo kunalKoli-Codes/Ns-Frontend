@@ -23,7 +23,7 @@ const BlogSingle: React.FC<BlogSingleProps> = ({ onNavigate }) => {
       setError(null);
       try {
         // Fetch all posts to find the one matching the slug
-        const response = await axios.get(`${API_URL}/api/blogposts`)
+        const response = await axios.get(`${API_URL}/api/blogposts`);
         const posts: BlogPost[] = response.data;
         const foundBlog = posts.find((b) => b.slug === slug);
 
